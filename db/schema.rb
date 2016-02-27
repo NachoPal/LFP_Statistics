@@ -11,46 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227170519) do
+ActiveRecord::Schema.define(version: 20160227183132) do
 
   create_table "leagues", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string "name", limit: 255
   end
 
   create_table "leagues_per_seasons", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "league_id",  limit: 4
-    t.integer  "season_id",  limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer "league_id",   limit: 4
+    t.integer "season_id",   limit: 4
+    t.string  "league_name", limit: 255
+    t.integer "season_year", limit: 4
   end
 
   add_index "leagues_per_seasons", ["league_id"], name: "index_leagues_per_seasons_on_league_id", using: :btree
   add_index "leagues_per_seasons", ["season_id"], name: "index_leagues_per_seasons_on_season_id", using: :btree
 
-  create_table "seasons", force: :cascade do |t|
-    t.integer  "year",       limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.boolean  "home"
+  create_table "matches", force: :cascade do |t|
+    t.integer  "week_id",      limit: 4
+    t.integer  "team_home_id", limit: 4
+    t.integer  "team_away_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_index "matches", ["week_id"], name: "index_matches_on_week_id", using: :btree
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "year", limit: 4
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
   create_table "teams_per_leagues_and_seasons", force: :cascade do |t|
-    t.integer  "leagues_per_season_id", limit: 4
-    t.integer  "team_id",               limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer "leagues_per_season_id", limit: 4
+    t.integer "team_id",               limit: 4
   end
 
   add_index "teams_per_leagues_and_seasons", ["leagues_per_season_id"], name: "index_teams_per_leagues_and_seasons_on_leagues_per_season_id", using: :btree
   add_index "teams_per_leagues_and_seasons", ["team_id"], name: "index_teams_per_leagues_and_seasons_on_team_id", using: :btree
+
+  create_table "weeks", force: :cascade do |t|
+    t.integer  "round",                 limit: 4
+    t.integer  "leagues_per_season_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "weeks", ["leagues_per_season_id"], name: "index_weeks_on_leagues_per_season_id", using: :btree
 
 end

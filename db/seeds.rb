@@ -16,14 +16,25 @@ s1 = Season.create(year: 2015)
 s1.leagues << l1
 s1.leagues << l2
 
-t1a = Team.create(name: 'Real Madrid', home: true)
-t1b = Team.create(name: 'Real Madrid', home: false)
-t2a = Team.create(name: 'Barcelona', home: true)
-t2b = Team.create(name: 'Barcelona', home: false)
+t1 = Team.create(name: 'Real Madrid')
+t2 = Team.create(name: 'Barcelona')
+
 
 lps = LeaguesPerSeason.first
 
-lps.teams << t1a
-lps.teams << t1b
-lps.teams << t2a
-lps.teams << t2b
+lps.teams << t1
+lps.teams << t2
+
+
+week = Week.create(round: 1)
+lps.weeks << week
+
+
+match1 = Match.create(team_home_id: t1.id,
+                     team_away_id: t2.id)
+
+match2 = Match.create(team_home_id: t2.id,
+                      team_away_id: t1.id)
+
+week.matches << match1
+week.matches << match2
