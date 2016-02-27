@@ -8,10 +8,22 @@
 
 #Leages
 
-League.create(name: 'Liga BBVA')
-League.create(name: 'Liga Adelante')
+l1 = League.create(name: 'Liga BBVA')
+l2 = League.create(name: 'Liga Adelante')
 
-Season.create(year: 2015)
+s1 = Season.create(year: 2015)
 
+s1.leagues << l1
+s1.leagues << l2
 
+t1a = Team.create(name: 'Real Madrid', home: true)
+t1b = Team.create(name: 'Real Madrid', home: false)
+t2a = Team.create(name: 'Barcelona', home: true)
+t2b = Team.create(name: 'Barcelona', home: false)
 
+lps = LeaguesPerSeason.first
+
+lps.teams << t1a
+lps.teams << t1b
+lps.teams << t2a
+lps.teams << t2b
