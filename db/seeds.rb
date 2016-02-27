@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Leages
+
+League.create(name: 'Liga BBVA')
+League.create(name: 'Liga Adelante')
+
+Season.create(year: 2015)
+
+
+
