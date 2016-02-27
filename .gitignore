@@ -11,7 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
-.idea/*
-.idea/.*
-cofing/database.yml
-config/secrets.yml
+/.idea/*
+/.idea/.*
+/cofing/database.yml
+/config/secrets.yml
