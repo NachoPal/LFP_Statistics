@@ -13,5 +13,5 @@
 /tmp
 /.idea/*
 /.idea/.*
-/cofing/database.yml
+/config/database.yml
 /config/secrets.yml
