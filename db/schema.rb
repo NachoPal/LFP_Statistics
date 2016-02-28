@@ -28,11 +28,37 @@ ActiveRecord::Schema.define(version: 20160227183132) do
   add_index "leagues_per_seasons", ["season_id"], name: "index_leagues_per_seasons_on_season_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
-    t.integer  "week_id",      limit: 4
-    t.integer  "team_home_id", limit: 4
-    t.integer  "team_away_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer "week_id",                limit: 4
+    t.integer "team_home_id",           limit: 4
+    t.integer "team_away_id",           limit: 4
+    t.integer "goals_home",             limit: 4
+    t.integer "goals_away",             limit: 4
+    t.integer "possession_home",        limit: 4
+    t.integer "possession_away",        limit: 4
+    t.integer "shoot_home",             limit: 4
+    t.integer "shoot_away",             limit: 4
+    t.integer "shoot_at_goal_home",     limit: 4
+    t.integer "shoot_at_goal_away",     limit: 4
+    t.integer "goalposts_home",         limit: 4
+    t.integer "goalposts_away",         limit: 4
+    t.integer "yellow_cards_home",      limit: 4
+    t.integer "yellow_cards_away",      limit: 4
+    t.integer "red_cards_home",         limit: 4
+    t.integer "red_cards_away",         limit: 4
+    t.integer "fouls_done_home",        limit: 4
+    t.integer "fouls_done_away",        limit: 4
+    t.integer "fouls_received_home",    limit: 4
+    t.integer "fouls_received_away",    limit: 4
+    t.integer "lost_balls_home",        limit: 4
+    t.integer "lost_balls_away",        limit: 4
+    t.integer "recovered_balls_home",   limit: 4
+    t.integer "recovered_balls_away",   limit: 4
+    t.integer "offside_home",           limit: 4
+    t.integer "offside_away",           limit: 4
+    t.integer "penalty_home",           limit: 4
+    t.integer "penalty_away",           limit: 4
+    t.integer "goalkeeper_action_home", limit: 4
+    t.integer "goalkeeper_action_away", limit: 4
   end
 
   add_index "matches", ["week_id"], name: "index_matches_on_week_id", using: :btree
@@ -54,10 +80,8 @@ ActiveRecord::Schema.define(version: 20160227183132) do
   add_index "teams_per_leagues_and_seasons", ["team_id"], name: "index_teams_per_leagues_and_seasons_on_team_id", using: :btree
 
   create_table "weeks", force: :cascade do |t|
-    t.integer  "round",                 limit: 4
-    t.integer  "leagues_per_season_id", limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer "round",                 limit: 4
+    t.integer "leagues_per_season_id", limit: 4
   end
 
   add_index "weeks", ["leagues_per_season_id"], name: "index_weeks_on_leagues_per_season_id", using: :btree

@@ -14,6 +14,5 @@ class CreateLeagues < ActiveRecord::Migration
       t.string :league_name
       t.integer :season_year
     end
-
   end
 end

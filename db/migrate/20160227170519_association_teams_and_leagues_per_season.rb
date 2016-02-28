@@ -9,6 +9,5 @@ class AssociationTeamsAndLeaguesPerSeason < ActiveRecord::Migration
       t.belongs_to :leagues_per_season, index: true
       t.belongs_to :team, index: true
     end
-
   end
 end
