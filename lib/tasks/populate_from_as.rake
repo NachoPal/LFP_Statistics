@@ -1,4 +1,4 @@
-namespace :populate do
+namespace :populate_from_as do
 
   desc 'populate Liga BBVA'
 
